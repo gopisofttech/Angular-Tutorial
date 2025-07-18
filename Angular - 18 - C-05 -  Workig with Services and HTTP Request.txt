@@ -1,0 +1,54 @@
+----- Working with Services and HTTP Requests -----
+
+
+1-Creating Services
+	
+	->  ng g service services/course
+
+2- Making HTTP Requests with HttpClient
+
+	-> Add  provideHttpClient() in the app.config.ts file
+
+3-Using RxJS to handle async data
+
+	 private baseUrl="http://localhost:3000";
+	constructor(private http: HttpClient) { }
+ 	 getCourses(): Observable<Course[]>
+  		{
+ 		 return this.http.get<Course[]>(`${this.baseUrl}/courses`);
+  		}
+
+
+4-Using Service in Components
+
+	-> 
+
+  		this.courseService.getCourses().subscribe(
+  		{
+  		next:(data: Course[]) =>
+  		{
+    		this.courses=data;
+  		},
+  		error: (err) => {console.error("Error fetching courses:", err);}
+ 		 }
+  		);
+
+5-Dependency Injection Explained
+
+6-Using Services for cross component communication
+
+	-> Components might need to communicate without being directly connected
+	-> Common pattern store shared data in a service
+	-> EX: Share a wishlist between multiple components by adding it to CourseService
+	-> Avoid excessive @Input and @Output bindings between components
+	-> Go for @Input/@Output for parent-child communication
+	-> For sharing data across multiple or unrelated components, use services
+	-> Improves scalability
+	-> It stores the data in memory of the application
+	-> 
+
+
+
+
+	
+

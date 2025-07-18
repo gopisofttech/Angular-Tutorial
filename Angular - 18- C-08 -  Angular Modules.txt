@@ -1,0 +1,67 @@
+------ Angular Modules ----
+
+1-Understanding Angular Modules
+
+	-> Great for structuring bigger applications
+	-> They group related
+		-> Components
+		-> Services
+		-> Directives
+		-> Pipes
+	-> Making bigger apps easier to scale maintain and lazy load.
+	-> Defined with @NgModule decorator
+	-> Fundamental building blocks
+	-> Better organization
+	-> Code reusability
+	-> Improved performance
+
+	-> Declarations
+		-> Components, directives and pipes belonging to the module
+	-> Imports
+		-> Modules required by component templates
+	-> Exports
+		-> Declarations visible and usable in other modules
+	-> Provides
+		-> Services available app-wide through the module
+	-> Bootstrap
+		-> Root component inserted into index.html
+	-> Feature Modules
+		-> Encapsulate related functionalities
+		-> Help organize by groping similar features
+	-> Shared Modules
+		-> Contain common components, directives and pipes
+		-> Prevent code duplication import when needed
+	-> Core Modules
+		-> House Singleton services and global configurations
+		-> Ensure consistency
+		-> Load only once
+
+2-Creating Feature Modules
+
+	-> ng generate module features/admin --routing
+	-> ng generate component features/admin/student-list
+
+3-Shared/Core modules
+	-> Feature Modules
+		-> Group specific functionalities
+	-> Shared Modules
+		-> For Components used everywhere
+		-> Avoids repeating code
+	-> Core Modules
+		-> Provide singleton services or global settings
+		-> Ensure global services are only instantiated once
+
+		-> {providedIn: 'root'}
+		-> Angular automatically makes the service available as a singleton in a core module
+		-> Why use {providedIn: 'root'} for services?
+			-> Singleton Instance
+			-> Automatic tree shaking
+			-> No extra boilerplate
+		-> Organizes global services and functionalities for larger apps
+		-> Imported once in the AppModule
+		-> Helps clarify global services
+		
+
+	
+
+

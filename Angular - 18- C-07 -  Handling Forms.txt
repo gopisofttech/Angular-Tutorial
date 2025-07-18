@@ -1,0 +1,18 @@
+----- Handling Form -----
+
+1-Angular Forms
+
+	-> Template-Driven Forms
+		-> Built with Angular directives in the HTML template
+		-> Great for simple Forms
+		-> Some Functionality is hidden behind the scenes
+	-> Reactive forms
+
+		-> Defined and Managed entirely in TypeScript
+		-> More Control of form's data and validation rules
+
+2-Building Reactive forms
+
+
+3-Implementing Form Validation
+

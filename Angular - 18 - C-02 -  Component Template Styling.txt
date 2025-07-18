@@ -1,0 +1,124 @@
+----- Working with Components Templates And Styling -----
+
+1-Working with components
+
+	-> Working with components
+
+		-> What are components
+			-> Central elements of an Angular application
+			-> Control a portion of the screen called the View
+			-> Handle logic for the view's functionality.
+			-> A components is a special TypeScript class that interacts with an HTML template to display information and handle user interactions.
+
+		-> Components break down the UI in chunks
+
+			-> Easier to manage and reuse
+			-> Cleaner code and easier maintenance
+			-> Smoother initial development process
+			-> Easier collaboration
+
+2-Understanding data binding
+
+		-> Data binding
+
+			-> Bridge between component's data and the HTML template
+			-> Connects the data from the Typescript class to the HTML template
+			-> Automatically updates view
+
+		-> Two-way Binding
+
+			-> Binding the data in the two ways Typescript <-----> HTML template
+
+	
+3-Understanding Property Binding
+
+		-> Property Binding
+
+			-> Dynamically sets HTML element based on component data
+			-> Instructions for specific parts of the view based on what's happening in the component
+			-> Syntax: [property]="expression"
+
+4-Adding Event binding to the Mix
+
+		-> Event Binding
+
+			-> Allows the view to respond to user actions (Such as Clicks)
+			-> Triggers methods in the TypeScript class of the component
+
+			-> Syntax : (event)="handler"
+
+			-> No need to manually add event listeners
+			-> Declarative syntax in the HTML file.
+
+5-Styling Components
+
+		-> Styling in Angular
+
+			-> Globally  < Styles.css>
+			-> Pre components <p [ngStyle]="{'border': true ? '2px solid red': 'none'} >
+
+6-Understanding LifeCycle hooks
+
+		-> LifeCycle Hooks
+
+			-> Angular manages the lifecycle of components
+			-> You don't create them Angular does.
+			-> Special methods for interacting with key moments in a component's existence such as Initialization and Destruction
+
+			-> ngOnInit
+				-> Commonly used lifecycle hook
+				-> Called once the component is initialized
+				-> Runs after the constructor and after Angular Setup inputs
+
+			-> Use cases for ngOnInit
+
+				-> Fetching data from a service
+				-> Initializing default values
+				-> Setting up subscriptions
+
+7-Using code blocks to create dynamic views
+
+		-> Dynamic View
+
+			-> @for (course of courses; track course.id)
+				{
+				<div class="course-item">
+				<h3>{{course.coursename }}</h3>
+				<p>{{course.description }}</p>
+				<p>{{course.price }}</p>
+				<p>{{course.date }}</p>
+				<p [hidden]="!courses[0].soldOut">Sold Out</p>
+
+				<img [src]="course.imga" [alt]="course.coursename" width="100">
+			-> @if(course.price<50)
+				{
+  				<div class="special-offer">Special Offer!</div>
+				}
+				<button (click)="ViewDetails(course.coursename)" >View Details</button>
+				</div>
+				}
+
+8-Transforming Data with Pipes
+
+	-> Pipes
+
+		-> Data transformers that format data before displaying it in the view
+		-> Help make templates cleaner and data presentation more consistent
+		-> Angular provides built-in-pipes ( Date Pipe, Currency Pipe)
+		-> Custom Pipes
+
+			-> Allow you to create specialized formatting for your needs
+			-> Encapsulate complex logic into reusable components
+
+
+9- Challenge: Check if a course is on sale
+
+10-Solution: Check if a course is on sale
+
+	-> Modify the list of courses to have an OnSale property
+	-> Use this in the template to conditionally display the banner
+	-> Add some CSS to display it nicely
+
+
+
+

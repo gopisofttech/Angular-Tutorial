@@ -1,0 +1,42 @@
+----- Sending Data across components -----
+
+1-Parent-child communication
+
+	-> One component is inside the other
+	-> Inner component is the child
+	-> Outer component is the parent
+
+2-The @Input Decorator
+
+	-> For  communicating from the parent to the child
+	-> Allow parent component to pass data down to child
+	-> Dynamic
+	-> Reusable components
+	-> Offers flexibility
+
+	-> What is @Input property
+
+		-> Marks a property as an input property
+		-> Enables data flow from parent to child
+		-> The flow
+
+			-> In the parent component, bind to the child's @Input property using property binding syntax
+			-> In the child component, use @Input to receive data
+
+
+3-The @Output Decorator and Event Emitters
+
+	-> @Output
+
+		-> @Output marks a property as an output property to emit events from child to parent
+		-> In the child component, create EventEmitter and decorate it with @Output
+		-> In the parent component, listen for the emitted event
+		-> Specify function in the parent to handle event
+		-> 
+
+4-Challenge: Add a wish list feature
+
+5-Solution: 
+
+	-> Steps
+

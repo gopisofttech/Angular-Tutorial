@@ -1,0 +1,28 @@
+----- Creating and Using Models -----
+
+1-Create data models
+
+	-> The "Contract" or "Template" for your data
+	-> Allow your to make your own data types
+	-> Improves predictability
+	-> Helps error detection
+
+	-> Two ways of creating models
+		-> Using the Angular CLI
+			-> ng g interface models/course --type=model
+		-> Manually
+
+	-> Why use Models
+
+		-> Better practice
+		-> IDE will warn you if you try to access a nonexistent property
+		-> consistent structure
+		-> Makes it easier to understand what properties are available on data objects
+		-> 
+
+2-Use Models within Components and Services
+
+	-> 
+3-
+	
+

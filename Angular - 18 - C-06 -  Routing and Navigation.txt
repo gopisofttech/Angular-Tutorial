@@ -1,0 +1,115 @@
+----- Routing and Navigation -----
+
+1-Setting up routing
+
+	-> Routing: Connecting the URL to a specific component
+	-> We selected Routing at the beginning of the project
+	-> app.retests file in the src/app/folder
+	-> This is where we define our routes
+
+app.routes.ts
+-------------
+
+import { Routes } from '@angular/router';
+import { CoursesListComponent } from './courses-list/courses-list.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
+
+export const routes: Routes = [
+
+  {path: "", redirectTo: "courses", pathMatch: "full"},
+  {path: "courses", component: CoursesListComponent},
+  {path: "courses/:id", component: CourseDetailComponent}
+
+];
+
+app.config.ts
+-------------
+
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+
+import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
+
+export const appConfig: ApplicationConfig = {
+  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+  provideRouter(routes),
+  provideHttpClient()
+]
+};
+
+2-Navigation Setup 
+
+	-> Use RouterLink directive for easy navigation
+	-> Works like HTML <a> tag but is tied to the Angular router
+<nav>
+  <a routerLink="/courses" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}">Courses</a>
+  <a routerLink="/courses/1" routerLinkActive="active">Courses Details</a>
+</nav>
+<router-outlet></router-outlet>
+
+3-Route parameters and query parameters
+
+	-> Routes can send information along with the route
+
+	-> Route parameters
+	-> Query parameters
+
+	-> Route parameters
+
+		-> /courses/:id
+		-> Use ActivtedRoute in CourseDetailsComponent to read : id and fetch corresponding data
+
+ constructor(private courseService : CourseService, private route: ActivatedRoute)
+  {
+
+  }	
+
+ ngOnInit(): void {
+
+      this.route.paramMap.subscribe(
+        params => {const idStr=params.get('id')
+          if(idStr)
+          {
+            const id = +idStr;
+            this.loadCourseById(id);
+          }
+        }
+      )
+
+  }
+
+ constructor(private router: Router)
+   {
+
+   }
+
+goToDetails(courseId: number): void
+{
+  this.router.navigate(["/courses", courseId]);
+}
+
+}
+
+
+	-> Query Parameters
+
+		-> Add extra data for filtering or logic
+		-> Example : /courses?description=frontend
+
+		-> filters by keyword
+
+
+	-> Steps for adding new navigation link
+
+		-> Generate the About component
+		-> Add the new route to your app.routes.ts file
+		-> Update the navigation links in your main component
+	-> 
+
+
+
+
+
+
+

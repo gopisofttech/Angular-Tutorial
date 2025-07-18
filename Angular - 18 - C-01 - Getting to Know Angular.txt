@@ -1,0 +1,173 @@
+------- Angular ----
+
+
+-> Angular: What and Why
+
+	-> Used for Building web applications
+	-> Framework deployed by google
+	-> To create dynamic single page application(SPAs)
+
+-> Tools and features
+
+	-> Use variables in HTML: data Binding
+	-> Work with dependency injection
+	-> Easily set up routing
+	-> Handle forms
+
+-> Uses of Angular
+
+	-> Simple websites
+	-> Complicated websites applications
+
+-> Benefits of Angular
+
+	-> Gives your applications structure
+	-> Provides scalability
+
+-> Angular vs. Competitors
+
+	-> React.js
+	-> Vue.js
+	-> Angular
+		-> Angular encourages a clean and organized codebase
+		-> Easier maintenance and scalability
+		-> Angular is often preferred by big corporations
+		-> Strong community and regular updates
+		-> Up-to-date with the latest web development trends
+
+2-Setting up the Angular Environment
+
+	-> Download and install Visual studio code
+		-> code.visualstudio.com
+		-> Add extensions
+	-> Install Node.js
+		-> The engine that runs JS code outside browsers
+		-> nodejs.org (www.nodejs.org.com)
+		-> Also, installs npm
+	-> npm
+		-> Node package manager
+	-> Install the Angular command-line-interface(CLI)
+		-> For easily creating and managing Angular project
+		-> npm install -g @angular/cli
+
+	
+	Note: Check if everything is installed correctly
+
+		-> Node.js: node -v
+		-> npm: npm -v
+		-> Angular CLI: ng version
+
+3-Creating our first Angular App
+
+	-> ng new <project name>
+	-> ng serve ---open
+
+4-Angular CLI
+
+	-> Angular command-line interface
+	-> Tools for scaffolding and managing Angular projects
+	-> Saves time by generating boilerplate code
+	-> Enforces Angular best practices
+
+	-> Common Commands
+
+		-> Creating new project: ng new <project name>
+		-> Serving the app: ng serve --open
+		-> Generating files: ng generate component/service/pipe/etc
+		-> Building for production : ng build
+		
+		-> Why Angular CLI is helpful
+	
+			-> Automatically updates configuration files and creates new folders
+			-> Helps avoid mistakes
+			-> Helps work faster
+			-> Maintains a consistent structure
+			-> Aligns with best practices
+
+5-Structure of Angular Applications
+
+	-> package.json
+
+		-> Heart of projects dependencies
+		-> Lists all packages the app needs
+			-> Angular
+			-> Typescript
+			-> Various Libraries
+
+	-> node_modules
+
+	-> angular.json
+
+		-> Here lies the Angular CLI configuration
+		-> It defines how our project is build and tested and it's includes for different environments and build options
+	
+	-> tsconfig.json
+
+		-> Typescript configuration file
+		-> Sets rules for Typescript compilation
+		-> Supports code consistency
+		-> Catches errors early
+
+	-> .gitignore
+
+		-> This file tells git which files or folders to ignore and not send to the remote such as GitHub or GitLab
+		-> This prevents unnecessary files such as the huge node modules folder or sensitive files containing environment secrets from being tracked in a version control
+
+	-> src
+
+		-> The application code lives here
+
+		-> main.js
+	
+			-> This is the entry point of our application
+			-> It bootstrap the Angular App essentially kicking off the whole process
+
+		-> index.html
+
+			-> This is main html file that Angular injects our app into.
+			-> This determines what we will see on the page
+
+		-> styles.css
+
+			-> This file contains global styles for our app affecting the look and feel across all components
+			-> its where we can set up color screens, typography and overall design aesthetics
+
+		-> app
+
+			-> it's a Asset components.
+			-> This is where our applications, component services and other core functionalities resides.
+			-> files
+
+				-> app.component.css
+				-> app.component.html
+				-> app.component.spec.ts
+				-> app.component.ts
+				-> app.config.ts
+				-> app.route.js
+
+		-> Public
+
+			-> This is the folder for aesthetic assets.
+			-> Images and other files that don't require processing by Angular.
+			-> It's great place to store your assets
+
+6-Chellenge:Clear the HTML
+
+		-> Steps
+			-> Create the starter app
+			-> Remove the content from app.component.html
+	
+7-Solution: Clear the HTML
+
+		-> Solution
+	
+			-> ng new course-booking-system
+
+
+
+
+
+
+
+
+
