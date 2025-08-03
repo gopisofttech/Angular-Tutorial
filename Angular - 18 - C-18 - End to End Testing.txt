@@ -1,0 +1,22 @@
+----- e2e Testing in Angular -----
+
+-> Basic Protractor Configuration
+
+	-> No more Protractor after Angular 16
+
+-> Built in Support
+
+	-> Cypress : https://www.cypress.io
+	-> Nightwathc : https://nightwatchjs.org
+	-> WebdriverIO: https://webdriver.io
+
+-> Compatible
+
+	-> Playwright : https://playwright.dev
+
+-> To continue using protractor
+
+	-> NES Protractor : https://www.herodevs.com/support/nes-protractor
+	-> HeroDevs will maintain Protractor for as long as needed
+
+-> 

@@ -1,0 +1,14 @@
+
+
+-> ng build --configuration=production
+
+-> ng deploy
+
+
+-> deploying it on Fire
+
+	-> ng add @angular/fire
+	->
+
+
+-> ng test --no -watch --code-coverage 

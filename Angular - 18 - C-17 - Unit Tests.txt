@@ -1,0 +1,112 @@
+----- Unit Tests -----
+
+
+-> Unit Tests
+
+	-> Reduce regression errors at the object or function level
+	-> Clarify the intent of your code
+	-> Usually does NOT test the user interface or user interactions
+
+-> End to End(e2e) Tests
+
+	-> Also called integration tests
+	-> Tests at the component and page level
+	-> Focuses on the expectations of your end users
+
+-> Testing Guidelines
+
+	-> Always test your code before sharing it
+	-> Know your target code coverage
+
+-> Recommended Setup
+
+	-> Unit Testing
+
+		-> Jasmine testing framework
+		-> Karma test runner
+
+	-> End to End testing
+
+		-> Protractor
+
+
+-> Unit test Demo
+
+describe('User list Services', () => {
+let service:UserListServices;
+  beforeEach(() => {
+    this.service = new UserListSerices();
+    })
+  });
+
+  it(' should return a user list with 15 users', (done, Donefn) => {
+
+
+    service.GetAll().then((response) =>
+    expect(response.length).toBe(15)
+    done();
+    });
+
+-> Unit testing for Pipe
+
+  import {HighlightTextPipe} from './highlight-text.pipe';
+  
+  describe('HightlightTextPipe', () => 
+  {
+   
+  it('create an instance', () => 
+	{
+	const pipe = new HightlightTextPipe();
+	expect(pipe).toBeTruthy();
+	}
+	);
+
+  it('wrap a simple string in a <span>', () => 
+	{
+	const pipe = new HightlightTextPipe();
+	expect(pipe.transform('foobar', 'foo')).toBe('<span class='highlight-text'>foo</span>bar')
+	}
+	);
+
+  } );
+
+
+-> Testing Components
+
+
+   import {TextBed, ComponentFixture} from '@angular/core/testing';
+   import {AppComponent} from './app.component';
+
+   describe('App component', () => {
+
+   let component: AppComponent;
+   let fixture: ComponentFixture<AppComponent>;
+
+   beforeEach(async) () => 
+   {
+   await TestBed.ConfigureTestingModule(
+
+    declarations: [AppComponent]
+
+   ).compileComponent();
+
+   fixture = TestBed.createComponent(AppComponent);
+   component = fixture.componentInstance;
+   fixure.detectChanges();
+  
+   });
+
+   it('should have a title', () => 
+   {
+     const compiled = fixture.nativeElement;
+     const title = compiled.querySelector('h2').textContent;
+     expect(title).toBe("Active Users");
+   });
+
+});
+
+
+ -> https://angular.io/docs
+  
+
+	

@@ -1,0 +1,47 @@
+----- Code Linting -----
+
+-> Code Linting
+	-> Also called "Static code analysis"
+	-> Checks for errors without running the code
+	-> Standardizes how you write source code
+	-> Consistency between developers
+
+-> TSLint
+
+	-> Https://palantir.github.io/tslint
+	-> Included with Angular
+	-> Deprecated in 2019
+	-> use ESLint instead : https://eslint.org
+
+-> ESLint
+
+	-> npm install eslint --save-dev
+	-> npx eslint --init
+	-> npx eslint src/app/app.component.ts
+	-> npm uninstall tslint
+	
+	-> npm install eslint-plugin-import --save-dev
+	-> npm install eslint-plugin-prefer-arrow-jsdoc --save-dev
+
+	-> npx eslint src/
+	-> npx eslint src --fix
+
+	-> install ESLint extension
+
+-> EditorConfig
+
+	-> Https://editorconfig.org
+	-> A way to standardize files across team members
+	-> Different from Static code analysis
+	-> Works locally in the editor
+	-> Works in real time
+	-> Can use one files across all your projects
+	-> But most projects have their own file
+	-> Add the EditorConfig for VScode extension
+
+
+
+Authour : LinkedInLearning : Derek peruo
+
+
+
