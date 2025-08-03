@@ -1,0 +1,144 @@
+----- Code Architecture Patterns -----
+
+-> Reduce bundle size with tree shakable providers
+
+	-> Tree Shakable Providers
+
+		-> Tree shaking removes unused code during the build process
+		-> Keeps the bundle size small
+
+	-> Optimizing Services
+
+		-> Creates a single shared instance of the service
+		-> Makes it easy for Angular to tree shake when needed
+		-> @Injectale ({providedIn: "root"})
+
+	-> Optimizing Components
+
+		-> Most useful when:
+			-> You are building a custom library
+			-> One component relies on a second component
+			-> The second component is optional
+			-> The second component is referenced as a value
+
+	-> Create the token
+		
+		-> Inject the token instead of the component class
+		-> Abstract classes have no impact on bundle size
+		-> export abstract class optionalHeaderToken {}
+
+	-> Create the component
+
+-> Injector Hierarchies
+
+	-> Dependency injection
+		-> A software pattern in which classes and functions request dependencies from an external source
+		-> You can not use angular without dependency injection
+
+	-> Injector Categories
+
+		-> ElementInjector
+		-> EnvironmentInjector
+		-> Resolution Modifiers
+
+			inject(someDependency, options);
+			inject(somedependency, {optional: true});
+
+-> Keeping the main thread clear with web workers
+
+	-> tsconfig.worker.json
+
+-> Archieving offline-first with service workers
+
+	-> ng add @angular/pwa
+	-> ngsw-config.json
+
+-> Get data instantly with client-side caching
+
+	-> Client side caching
+
+		-> Improves UX without too much extra dev effort
+		-> Lots of ways to cache data on the client
+		-> Consider using multiple techniques at the same time
+
+-> Balancing security with performance
+
+	-> General Guidelines
+
+		-> Upgrade Angular to the latest release
+		-> Never modify the code of Angular
+		-> Avoid APIs with security warnings
+		-> Avoid DOM manipulation
+		-> Use bindings and text interpolation
+
+	-> Use the AOT compiler
+
+		-> Faster rendering
+		-> Fewer network request
+		-> Smaller payloads
+		-> Used by default in Angular v9+
+
+	-> More layers of security
+
+		-> Content security policy
+
+			-> Limits when and how servers load resources for a webpage
+	
+		-> Trusted Types
+			-> Limit when and how applications accept incoming string values
+			-> limited availability across major browsers
+			-> Angular will use its own sanitizer if needed
+
+	-> Use the Angular HttpClient
+
+		-> Helps prevent
+			-> Cross-site request forgery
+			-> Cross-stie script inclusion
+		-> Makes integration on the client side easier
+	
+	-> User Authentication
+
+		-> Passkeys
+
+			-> Strong and secure
+			-> Easy to use
+			-> Fast for end users
+
+		-> Single Sign-on(SSO)
+
+			-> Users existing credentials
+			-> Less infrastructure
+			-> Fewer passwords to remember
+			-> Choose your provider carefully
+
+-> Gain more control with Angular Refs
+
+	-> Angular Refs
+	
+		-> Utilities that let you interact with lower-level Angular concepts
+		-> Help you fine-tune performance
+		-> Manage higher-level Angular concepts in a more precise way
+			-> ChangeDetectorRef
+			-> DestroyRef
+			-> ElementRef
+			-> ForwardRef()
+			-> ViewContainerRef
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

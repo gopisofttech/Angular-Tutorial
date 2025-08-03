@@ -1,0 +1,8 @@
+-> Https://angular.dev
+-> https://www.typescriptlang.org
+-> https://github.com/angular
+-> htts://web.dev
+-> https://developer.mozilla.org
+-> https://github.com/papers-we-love/papers-we-love/blob/main/design/out-of-the-tar-pit.pdf
+-> https://www.linkedin.com/learning/instructors/derek-peruo
+

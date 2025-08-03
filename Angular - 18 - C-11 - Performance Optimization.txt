@@ -1,0 +1,284 @@
+----- Performance Optimization -----
+
+-> Common Configuration Tweaks
+
+	-> AOT
+
+-> Component View encapsulation
+
+	-> How Angular scopes CSS styles for a component
+	-> Only matters if you define CSS as part of a component stylesheet
+	-> Global styles are always global
+	-> Three modes
+		-> ViewEncapsulation.Emulated
+		-> ViewEncapsulation.shadowdom
+		-> ViewEncapsulation.None
+	-> One mode may work best for a particular component
+	-> Start with the largest contentful paint if unsure where to begin
+	-> 	@Component({
+		encapsulation: ViewEncapsulation.ShadowDom
+		})
+	-> Emulated Mode
+
+		-> All components use Emulated mode by default
+		-> Isolates component styles and still allows global CSS to have an effect
+			<div _ngcontent-ng-c2862288721>
+			</div>
+
+	-> ShadowDom Mode
+	
+		-> Global styles should have no effect on shadow tree components
+		-> ShadowDom may affect event propagation and <slot> elements
+	-> None Mode
+
+		-> Disables all encapsulation for that component
+			-> All Styles become global styles
+
+-> Change Detection (skiping change detection on component subtrees)
+
+	-> Works by patching low-level browser APIs with custom code
+	-> Triggers a comparison function as a side effect
+	-> Can make the UI sluggish if you are not careful
+.
+-> Fine-tuning state management
+
+	-> Stateless code
+		-> The best state is no state at all
+		-> Easier to write
+		-> Easier to test
+		-> Easier to reason about
+		-> Can use caching and memoization with pure functions
+
+	-> Pure Functions
+
+		-> Always return the same output for the same inputs
+		-> Can return a cached value if it exists
+		-> Boost performance over time
+	
+	-> Inputs and Outputs
+
+		-> Use input() and output() in components
+		-> Use signals API in services
+
+	-> State composition
+
+		-> Keep it close to the point of use
+		-> Give each feature full autonomy of its own state
+		-> Makes states modular and easier to compose together
+
+	-> Think in Layers
+
+		-> Global State
+			|
+		-> Domain Specific states
+			|
+		-> Local States
+
+	-> Define your state
+		-> Ate the lowest level you can
+		-> Limit contact to the smallest number of interactions
+
+-> Optimizing slow computations
+
+	-> Change detection cycles should be fast
+	-> Run them only when you need to
+
+	-> On Every Change Detection Cycle Angular Evaluates
+
+		-> Template expressions
+		-> ngDoCheck()
+		-> ngAfterContentChecked()
+		-> ngAfterViewChecked()
+		-> ngonChanges()
+
+	-> Angular DevTools Profiler Tab
+	-> Fixing Slow computations
+
+		-> Refactor code
+
+			-> Avoid long tasks
+			-> Long task: code that takes 50 milliseconds or longer to execute
+
+		-> use Pure pipes
+	
+			-> Use a shallow comparison to check inputs
+			-> Be careful with objects and arrays as inputs
+
+	-> use Memoization
+
+		-> Like pure pipes , but can store many results
+		-> Can use a lot of memory if you are not carefull
+		-> Start with pure pipes: add memorization only if needed
+	
+	-> Avoid repaints and reflows
+		-> Can make the UI slow and unresponsive.
+
+	-> @defer Blocks
+
+		-> Delay components until the end of a loading cycle
+		-> when to load the content
+
+	          @defer (on interaction(footerContainer))
+			{
+				<app-server-stats></app-server-stats>
+			}
+
+	-> Preventing Memory Leaks
+
+		-> Memory Leaks
+			-> Happen when JavaScript fails to release allocated memory
+			-> Sluggish UI or page navigation
+			-> Spikes in CPU usage	
+			-> Duplicate event listeners
+			-> Browser tabs crashing or freezing
+
+		-> RxJS Subscriptions
+
+			-> Forgetting to unsubscribe is a common source of memory leaks
+			-> You must unsubscribe or complete to garbage collect.
+			-> Avoid manual unsubscribe
+
+				@let data =data$ | async;
+				public data = toSignal(This.data$);
+				this.data$.pipe(takeUntilDestroyed()).subscribe();
+
+		-> Event Listeners
+
+			-> Manual event listeners can also lead to memory leaks
+			-> References stay alive if you don't remove the listener
+			-> Use Angular event binding instead of listeners when you can
+
+		-> Use Render2 with Caution
+
+			-> export class SomeComponent
+				{
+				ngAfterViewInit()
+				{
+				this.unlisten = this.renderer2.listen('document', 'click', (event)=> {
+					} )
+				}
+				}
+
+				ngOnDestroy()
+				{
+					this.unlisten();
+				}
+
+		-> References and Timers
+
+			-> Avoid references to destroyed components and DOM elements
+			-> Clear away setTimeOut(), setInterval() and Http requests
+			-> Initilize and destroy third party code as needed
+			-> Take adgantage of angular dependency injection
+			-> Use Web workers
+
+	
+-> Enhancing router performance
+
+	-> Lazy loading
+	-> preloading  - route
+	
+
+-> Optimizing Forms
+
+	-> Two strategies
+		-> Depends on how much data you collect
+		-> Depends on how much of the form changes based on user input
+	
+		-> Template-Driven forms
+
+			-> Manage state inside a component's template
+			-> Use HTML attributes and directives
+			-> A good strategy
+				-> for collecting the same data from all users
+				-> When native HTML validation is enough to verify inputs
+			-> Flexible, but harder to test and debug if you're not careful
+	 
+
+		-> Reactive Forms
+			
+			-> Good for dynamic fields, custom validators, or complex logic
+			-> Manage state inside a components class
+			-> Give you more control over how you work with forms
+			-> But also add code complexity
+
+	-> Maximizing Performance.
+
+		-> Keep forms short: ask only for what you need
+		-> Simplify your validators
+		-> Minimize repaints and reflows
+		-> Use signals and standalone components
+		-> Give users clear and immediate feedback
+		-> Use client-side validation to avoid extra network calls
+		-> Consider the user's experience after clicking the submit button
+		-> Test your forms for accessibility
+
+	-> Accessibility
+
+		-> Think about likely scenarios
+
+			-> Check for color, contrast, and proximity(Light, and dark mode)
+			-> Test screen readers, zoomed-in content keyboard navigation and other tools
+			-> Test with the sound turned off if your form uses audio
+
+	-> More info
+
+		-> https://angular.dev/guide/forms
+		-> https://web.dev/learn/forms/validation
+		-> https://www.linkedin.com/learning/angular-on-the-go-large-scale-projects
+
+-> Optimize Images
+
+	-> <img class="rounded-circle" [ngSrc]="player.avatar" width="175" height="80" sizes="50vm" ngSrcset="1x, 2x,3x" priority placeholder >
+
+	-> in app.config.js
+
+		{
+			provide: IMAGE_LOADER,
+			useValue: (config: ImageLoaderConfig) => 
+			{
+			return `/avatars/${config.src}-${config.width ?? '175'}.jpeg`;
+		}
+
+-> Avoiding Zone pollution
+
+	-> When Angular runs change detection it doesn't need
+	-> Too much can slow down your app and make your UI sluggish
+	-> Third party libraries
+		-> Set up event listeners
+		-> Call setTimeOut() or setInterval()
+		-> Run code inside requestAnimationFrame()
+
+	-> Using onPush
+	-> Using ChangeDectectorRef
+	-> Using ngZone
+	-> More info
+
+		https://angular.dev/api/core/ChangeDetectionStrategy
+
+-> Angular without ZoneJS
+
+	-> Starting in Angular v18 opt in for a "zoneless" architecture
+	-> Fewer change detection cycles
+	-> Smaller app bundles
+	-> Faster setup times
+	-> Better debugging
+	-> Better compatibility with third party APIs
+
+	-> Risks of zoneless Angular
+
+		-> Experimental feature: API subject to change
+		-> Requires changes to project dependencies
+		-> May require refactoring of code and unit tests
+
+-> App Shell Pattern
+
+		-> A way to quickly render essential UI on page load
+		-> Gives users the feeling of a fast application
+		-> Great for slower network connection
+	
+
+
+
+	
+

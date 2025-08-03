@@ -1,0 +1,76 @@
+----- Unlocking Angular - Performance Optimization -----
+
+https://lnkd.in/gDiPrGx8
+
+-> Performance Metrics
+
+	-> Measure how fast and responsive your app feels
+	-> Can't replace real world testing
+	-> Still a good proxy for speed, responsiveness and visual stability
+	-> Fixing your metrics will help real world scenarios
+
+	-> Start here
+		-> First contentful paint(FCP)
+			-> How long it takes the browser to render the first piece of content
+			-> shorter times are better : aim for 1.8 seconds or less on mobile devices
+
+		-> Largest contentful paint(LCP)
+			-> How long it takes the browser to render the largest piece of visible content
+			-> Shorter times are better: aim for 2.5 seconds or less on mobile devices
+
+		-> Total blocking time (TBT)
+			-> How long users must wait before they can interact with content
+			-> Shorter times are better: aim for 200 seconds or less on mobile devices
+			
+		
+		-> Cumulative layout shift(CLS)
+			-> The amount of layout shift that happens as your page loads
+			-> Lower scores are better: aim for 0.1 or less on all devices
+
+		-> Speed index
+			-> Overall perceived speed  and visual completeness of your webpage
+			-> Shorter times are better: aim for 3.4 seconds or less on mobile devices
+
+
+	-> Track as needed
+
+		-> Interaction to next paint(INP)
+		-> First paint
+		-> First meaningful paint(FMP)	
+		-> Time to first byte(TTFB)
+		-> Time to interactive
+
+-> Lighthouse overview
+
+	-> Developed by google.
+
+	-> Run Lighthouse
+
+		-> Inside your web browser
+		-> From the command line
+		-> As a node module
+
+	-> Generate a Light House report
+
+		-> Mode
+			-> Navigation (Default)	
+			-> Timespan
+			-> Snapshot
+
+		-> Device
+			-> Mobile
+			-> Desktop
+
+		-> Catagories	
+			-> Performance
+			-> Accessibility
+			-> Best Practices
+			-> SEO
+
+-> Angular DevTool overview
+
+	-> Maintained by the official Angular Team.
+	-> Helps you focus where you need it most
+	-> Built for debugging Angular Apps
+
+
