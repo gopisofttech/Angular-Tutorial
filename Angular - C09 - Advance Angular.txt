@@ -1,0 +1,117 @@
+
+----- Advance Feature of Angular ----
+
+
+-> Install docker
+-> Node.js
+-> npm
+-> Angular cli
+
+
+
+-> Feature Module
+-> Shared Module
+
+-> Dumb component -  Display input and output data  - Stateless
+-> Smart component - Having servicing , data and logic - Stateful
+
+-> Project organization
+
+	-> Compunents
+	-> Modules
+	-> Services
+	
+	-> By features or functions
+
+		-> Contact list  -> Component - Component - Template  - Service - Module
+		-> Company list  -> Component - Component - Template  - Service - Module
+		-> Add new contact -> Component - Component - Template  - Serviced
+	
+-> Routing
+	
+	-> SimpleRoute
+	-> DynamicRoute
+	-> NestedRoute
+
+-> Protecting routes with guards
+
+	->  Controls the routing with Route Guards
+
+	-> Type of Route Guards
+
+		-> CanActivate  - 
+		-> CanDeactivate - Prevents users from Navigating away from a route
+		-> CanLoad - Prevents loading entire lazy-loaded modules
+		-> CanActivateChild - Works like CanActivate but to child routes
+		-> Resolve - Pre-fetches data before a route is activated
+
+-> Lazy Loading and onPush
+
+	-> const routes : Routes = [
+		{
+			path: 'dashboard',
+			loadChildren: () =>
+				import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+		},
+		];
+		
+	-> OnPush change detection strategy
+
+		-> @Component ({
+			selector: 'app-component',
+			changeDetection: ChangeDetectionStrategy.OnPush,
+			templateUrl: './mycomponent.component.html',
+		})
+		
+		export class Mycomponent {}
+		
+	
+-> Unit Tesing with Jasmine and Karma
+
+	-> app.component.spec.ts
+	-> ng test
+	-> 
+
+-> AOT and Build optimization
+
+	-> AOT - Ahead of Time Compilation
+		-> Faster rendering
+		-> Smaller bundles
+		-> Better error deduction
+
+	-> Build Optimization
+		-> Tree Shaking
+		-> Minification
+		-> Bundling
+
+-> Continuous integration and development (CI/CD)
+
+	-> Travis-ci.com
+		-> OpenSource
+	-> Jenkins
+		-> OpenSource
+	> GitHub Action
+
+	> BitBucket Pipelines
+
+-> Global Error Handling and app monitoring
+
+	-> Sentry.io
+	-> logrocket.com
+	-> raygun.io
+	-> rollbar.com
+	
+	-> Benefits of real time monitoring
+
+		-> Immediate alerts
+		-> Detailed stack traces
+		-> Error Context
+		-> Session Replay
+		-> Collaborative debugging
+
+
+		
+
+	
+
+
